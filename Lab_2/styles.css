@@ -1,12 +1,14 @@
+/* Основні стилі для сторінки */
 body {
-    font-family: 'Arial', sans-serif; /* [cite: 163] */
-    background-color: #f4f4f9;        /* [cite: 162] */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     color: #333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
+/* Стилізація заголовка сторінки */
 header {
     background-color: #2c3e50;
     color: #ffffff;
@@ -19,6 +21,7 @@ header h1 {
     font-size: 2.5em;
 }
 
+/* Оформлення основного контейнера */
 main {
     max-width: 800px;
     margin: 20px auto;
@@ -39,28 +42,28 @@ h2 {
 }
 
 ul {
-    list-style-type: square; /* [cite: 193] */
+    list-style-type: square;
 }
 
-/* Стилі для Варіанту 6 */
+/* Стилі специфічні для Варіанту 5  */
 .variant-section {
-    /* Умова: Унікальний колір контенту (Hex з номера варіанта 6 -> #666666)  */
-    color: #666666; 
-    
-    /* Умова: Варіант парний (6), тому вирівнювання по центру  */
-    text-align: center; 
-    
-    /* Умова: Відступи дорівнюють варіанту (6px)  */
-    padding: 6px;
-    margin: 6px;
-    
-    /* Додаткове оформлення для візуального виділення секції */
-    border: 2px dashed #666666;
+    /* Умова 1: Hex колір, що складається з номеру варіанта */
+    color: #555555;
+
+    /* Умова 2: Непарний варіант -> вирівнювання за правою стороною */
+    text-align: right;
+
+    /* Умова 3: Відступи дорівнюють номеру варіанта (5px) */
+    padding: 5px;
+    margin: 5px;
+
+    /* Додаткове візуальне оформлення секції */
+    border: 2px dashed #555555;
     background-color: #e6e6e6;
 }
 
 .variant-section h2 {
-    color: #444; /* Трохи темніший для заголовка всередині спец. секції */
+    color: #333;
 }
 
 /* Футер */
