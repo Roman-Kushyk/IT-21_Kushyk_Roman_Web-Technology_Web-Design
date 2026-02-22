@@ -1,0 +1,61 @@
+/* Базові стилі */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Flexbox контейнер */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Дозволяє переносити блоки на новий рядок */
+  justify-content: space-around; /* Рівномірний простір між блоками */
+  align-items: center; /* Вирівнювання по центру */
+  padding: 20px;
+}
+
+/* Box Model (Блоки з фото) */
+.box {
+  background-color: white;
+  border: 2px solid black; /* Рамка */
+  padding: 15px; /* Внутрішній відступ */
+  margin: 10px; /* Зовнішній відступ */
+  width: 200px; /* Ширина блоку */
+  text-align: center;
+}
+
+.box img {
+  width: 100%; /* Картинка не вилазить за межі блоку */
+  height: auto;
+}
+
+/* Планшетна версія (до 768px) */
+@media (max-width: 768px) {
+  .box {
+    width: 40%; /* Блоки стають ширшими, стають по два в ряд */
+  }
+}
+
+/* Мобільна версія (до 480px) */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column; /* Розташування блоків вертикально в один стовпчик */
+  }
+
+  .box {
+    width: 80%; /* Блок на всю ширину екрану */
+    
+    /* Зміни за додатковими умовами: */
+    background-color: #add8e6; /* Новий колір заливки (світло-синій) */
+    font-family: "Times New Roman", Times, serif; /* Зміна шрифту */
+    font-size: 24px; /* Збільшення розміру шрифту */
+  }
+}
