@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна робота 4: Вступ до JavaScript</title>
+</head>
+<body>
+  <h1>Лабораторна робота 4: Вступ до JavaScript</h1>
+  
+  <script>
+    // Завдання 1: Привітання користувача
+    console.log("Завдання 1.");
+    
+    function greetUser() {
+      let userName = prompt("Введіть ваше ім'я:");
+      
+      let greeting = "Привіт, " + userName + "! Радий тебе бачити!";
+      
+      alert(greeting);
+      console.log(greeting);
+    }
+    
+    greetUser();
+
+
+    // Завдання 2: Проста арифметика
+    console.log("Завдання 2.");
+    
+    function calculateNumbers() {
+      let num1 = Number(prompt("Введіть перше число:"));
+      let num2 = Number(prompt("Введіть друге число:"));
+      
+      // Вказує 5-й варіант
+      let studentVariant = 5; 
+      
+      if (studentVariant % 2 === 0) {
+        // Якщо варіант парний
+        let sum = num1 + num2;
+        let difference = num1 - num2;
+        
+        alert("Варіант парний.\nСума: " + sum + "\nРізниця: " + difference);
+        console.log("Сума:", sum, "Різниця:", difference);
+      } else {
+        // Якщо варіант непарний
+        let product = num1 * num2;
+        let quotient = num1 / num2;
+        
+        alert("Варіант 5 (непарний).\nДобуток: " + product + "\nЧастка: " + quotient);
+        console.log("Добуток:", product, "Частка:", quotient);
+      }
+    }
+    
+    calculateNumbers();
+
+
+    // Завдання 3: Вік користувача
+    console.log("Завдання 3.");
+    
+    function compareAge() {
+      let birthYear = Number(prompt("Введіть ваш рік народження:"));
+      
+      let currentYear = 2026;
+      let userAge = currentYear - birthYear;
+      
+      const myAge = 19;
+      
+      let message = "Поточний вік користувача: " + userAge + " років.\n";
+      
+      // Перевіряє, хто старший, і рахує різницю
+      if (userAge > myAge) {
+        let diff = userAge - myAge;
+        message = message + "Користувач старший на " + diff + " років.";
+      } else if (userAge < myAge) {
+        let diff = myAge - userAge; // Щоб різниця не була з мінусом
+        message = message + "Користувач молодший на " + diff + " років.";
+      } else {
+        message = message + "Ми однолітки!";
+      }
+      
+      // Виводить фінальне повідомлення
+      alert(message);
+      console.log(message);
+    }
+    
+    // Викликає функцію третього завдання
+    compareAge();
+
+  </script>
+</body>
+</html>
