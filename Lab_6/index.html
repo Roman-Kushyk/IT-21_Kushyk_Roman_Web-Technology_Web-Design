@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація - Лабораторна робота 6 (Варіант 5)</title>
+    <style>
+        html, body {
+            height: 100%; 
+            margin: 0; 
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* Flexbox для центрування */
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+
+        /* Стилі для самої форми */
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Решта стилів без змін */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Реєстрація</h2>
+        <form id="registrationForm">
+            
+            <div class="form-group">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" placeholder="Введіть ваше ім'я">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" placeholder="example@mail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" placeholder="Мінімум 6 символів">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Підтвердження пароля:</label>
+                <input type="password" id="confirmPassword" placeholder="Повторіть пароль">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Вік:</label>
+                <input type="number" id="age" placeholder="Від 10 років">
+            </div>
+
+            <div class="form-group">
+                <label for="group">Група:</label>
+                <select id="group">
+                    <option value="">Оберіть групу...</option>
+                    <option value="IT-101">ІТ-101</option>
+                    <option value="IT-102">ІТ-102</option>
+                    <option value="IT-103">ІТ-103</option>
+                    <option value="IT-104">ІТ-104</option>
+                </select>
+            </div>
+
+            <button type="submit">Зареєструватися</button>
+        </form>
+    </div>
+
+    <script>
+        // Решта JavaScript-коду залишається без змін
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            // ... (Перевірки) ...
+            event.preventDefault(); 
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let age = document.getElementById("age").value;
+            let group = document.getElementById("group").value;
+
+            let errors = [];
+
+            if (name.trim() === "") {
+                errors.push("- Поле імені не може бути порожнім.");
+            }
+
+            if (email.trim() === "") {
+                errors.push("- Введіть email.");
+            } else if (!email.includes("@") || !email.includes(".")) {
+                errors.push("- Введено некоректний формат email.");
+            }
+
+            if (password.length < 6) {
+                errors.push("- Пароль має містити мінімум 6 символів.");
+            }
+
+            if (password !== confirmPassword) {
+                errors.push("- Паролі не збігаються.");
+            }
+
+            if (age === "" || Number(age) < 10) {
+                errors.push("- Вік має бути від 10 років.");
+            }
+
+            if (group === "") {
+                errors.push("- Будь ласка, оберіть групу зі списку.");
+            }
+
+            if (errors.length > 0) {
+                alert("Помилка реєстрації! Виправте наступне:\n" + errors.join("\n"));
+            } else {
+                alert("Реєстрація успішна!");
+                document.getElementById("registrationForm").reset();
+            }
+        });
+    </script>
+</body>
+</html>
