@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Стиль для наведення */
+.highlighted-style {
+    background-color: #f1c40f;
+    color: #c0392b;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+/* Стилі для динамічного списку */
+#elements-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.new-item {
+    background-color: #e8f8f5;
+    padding: 10px;
+    margin-top: 10px;
+    border-left: 4px solid #1abc9c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+#variant-btn {
+    background-color: #9b59b6;
+    font-size: 16px;
+}
+
+#variant-btn:hover {
+    background-color: #8e44ad;
+}
