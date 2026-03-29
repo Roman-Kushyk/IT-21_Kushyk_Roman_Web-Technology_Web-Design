@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №7</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        .button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.5s ease, transform 0.1s ease; 
+        }
+        
+        .button:hover {
+            background-color: red;
+        }
+        
+        .button:active {
+            transform: scale(1.1); 
+        }
+
+        .content-container {
+            margin-top: 20px;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-out; 
+        }
+
+        .content-container:hover .content {
+            max-height: 100px; 
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            margin-top: 20px;
+            animation: moveBox 2s linear infinite; 
+        }
+
+        @keyframes moveBox {
+            0% { transform: translateX(0px); }
+            50% { transform: translateX(200px); }
+            100% { transform: translateX(0px); }
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Завдання 1: Кнопка</h2>
+    <button class="button">Наведи та клікни</button>
+
+    <h2>Завдання 2: Текстовий блок</h2>
+    <div class="content-container">
+        Наведи курсор сюди
+        <div class="content">
+            <p>Цей текст плавно з'являється завдяки зміні max-height.</p>
+        </div>
+    </div>
+
+    <h2>Завдання 3: Рух блоку</h2>
+    <div class="box"></div>
+
+    <h2>Індивідуальне завдання</h2>
+    <button id="startAnimBtn">Запустити індивідуальне завдання</button>
+    <div class="circle" id="myCircle"></div>
+
+    <script>
+        const N = 5; 
+        
+        const circle = document.getElementById('myCircle');
+        const startBtn = document.getElementById('startAnimBtn');
+
+        const animationDuration = N * 0.2; 
+        const transitionDuration = (N % 5) * 0.3; 
+
+        circle.style.transition = `background-color ${transitionDuration}s ease`;
+
+        startBtn.addEventListener('click', () => {
+            circle.style.animation = `moveBox ${animationDuration}s linear infinite`;
+
+            setInterval(() => {
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                circle.style.backgroundColor = randomColor;
+            }, N * 1000); 
+        });
+    </script>
+</body>
+</html>
