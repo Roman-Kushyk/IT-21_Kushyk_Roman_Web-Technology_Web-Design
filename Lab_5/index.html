@@ -71,7 +71,6 @@
     </footer>
 
     <script>
-        // 1. Реалізація обробника події для кнопки, який змінює вміст елемента
         const textToChange = document.getElementById('text-to-change');
         const btnChange = document.getElementById('btn-change');
 
@@ -79,7 +78,6 @@
             textToChange.textContent = "Текст змінено! Це новий вміст.";
         });
 
-        // 2. Обробник події для наведення курсору, який змінює стиль
         const hoverElement = document.getElementById('hover-element');
 
         hoverElement.addEventListener('mouseover', function() {
@@ -92,15 +90,14 @@
             hoverElement.style.fontSize = '';
         });
 
-        // 3. Додавання нових елементів до DOM
         const btnAdd = document.getElementById('btn-add');
         const container = document.getElementById('elements-container');
 
         btnAdd.addEventListener('click', function() {
-            const newItem = document.createElement('p'); // Створення нового абзацу
+            const newItem = document.createElement('p'); 
             newItem.className = 'new-item';
             newItem.textContent = 'Це новий доданий елемент.';
-            container.appendChild(newItem); // Додавання в контейнер
+            container.appendChild(newItem); 
         });
 
         // 4. Додаткове завдання: кнопка для 5-го варіанту
@@ -108,7 +105,7 @@
         let clickCount = 0; // Змінна для підрахунку кліків
 
         btnVariant.addEventListener('click', function() {
-            clickCount++; // Збільшуємо лічильник при кожному кліку
+            clickCount++; 
             
             if (clickCount === 5) {
                 alert("Роман Кушик варіант номер 5!");
