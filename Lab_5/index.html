@@ -2,43 +2,119 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Практична робота - DOM та події</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Лабораторна робота 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+        .hover-box {
+            padding: 10px;
+            border: 1px solid black;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .new-item {
+            border: 1px solid #333;
+            padding: 5px;
+            margin-top: 5px;
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Практична робота: Маніпуляція DOM</h1>
+        <h1>Маніпуляція DOM та обробка подій</h1>
     </header>
 
     <main>
-        <section id="text-section">
-            <h2>1. Маніпуляція контентом</h2>
-            <p id="target-paragraph">Це базовий абзац. Натисни кнопку нижче.</p>
-            <button id="change-text-btn">Змінити текст</button>
+        <section>
+            <h2>Зміна вмісту елемента</h2>
+            <p id="text-to-change">Початковий текст.</p>
+            <button id="btn-change">Змінити текст</button>
         </section>
 
-        <section id="style-section">
-            <h2>2. Зміна стилів (Hover)</h2>
-            <p id="hover-element">Наведи на мене курсор, щоб змінити мій стиль!</p>
+        <hr>
+
+        <section>
+            <h2>Обробка подій</h2>
+            <div id="hover-element" class="hover-box">Наведіть курсор на мене</div>
+            <p>Наведіть курсор на елемент вище, ви побачите зміну стилю.</p>
         </section>
 
-        <section id="dynamic-section">
-            <h2>3. Динамічний список завдань</h2>
-            <button id="add-item-btn">Додати завдання</button>
-            <ul id="elements-list"></ul> 
+        <hr>
+
+        <section>
+            <h2>Додавання нового елемента</h2>
+            <button id="btn-add">Додати елемент</button>
+            <div id="elements-container"></div>
         </section>
 
-        <section id="variant-section">
-            <h2>4. Додаткове завдання</h2>
-            <button id="variant-btn">Натисніть 5 разів!</button>
+        <hr>
+
+        <section>
+            <h2>Додаткове завдання</h2>
+            <button id="btn-variant">Натисніть 5 разів!</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Практична робота з JavaScript</p>
+        <p>Лабораторна робота 5. JavaScript, DOM, події.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. Реалізація обробника події для кнопки, який змінює вміст елемента
+        const textToChange = document.getElementById('text-to-change');
+        const btnChange = document.getElementById('btn-change');
+
+        btnChange.addEventListener('click', function() {
+            textToChange.textContent = "Текст змінено! Це новий вміст.";
+        });
+
+        // 2. Обробник події для наведення курсору, який змінює стиль
+        const hoverElement = document.getElementById('hover-element');
+
+        hoverElement.addEventListener('mouseover', function() {
+            hoverElement.style.backgroundColor = 'yellow';
+            hoverElement.style.fontSize = '18px';
+        });
+
+        hoverElement.addEventListener('mouseout', function() {
+            hoverElement.style.backgroundColor = '';
+            hoverElement.style.fontSize = '';
+        });
+
+        // 3. Додавання нових елементів до DOM
+        const btnAdd = document.getElementById('btn-add');
+        const container = document.getElementById('elements-container');
+
+        btnAdd.addEventListener('click', function() {
+            const newItem = document.createElement('p'); // Створення нового абзацу
+            newItem.className = 'new-item';
+            newItem.textContent = 'Це новий доданий елемент.';
+            container.appendChild(newItem); // Додавання в контейнер
+        });
+
+        // 4. Додаткове завдання: кнопка для 5-го варіанту
+        const btnVariant = document.getElementById('btn-variant');
+        let clickCount = 0; // Змінна для підрахунку кліків
+
+        btnVariant.addEventListener('click', function() {
+            clickCount++; // Збільшуємо лічильник при кожному кліку
+            
+            if (clickCount === 5) {
+                alert("Роман Кушик варіант номер 5!");
+                clickCount = 0; // Обнуляємо лічильник після показу alert
+            }
+        });
+    </script>
 </body>
 </html>
