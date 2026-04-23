@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота 8 - Список справ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Список справ (To-Do)</h2>
+    
+    <div class="controls">
+        <button class="btn" id="refreshBtn">🔄 Оновити</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Завдання (Title)</th>
+                <th>Статус виконання</th>
+            </tr>
+        </thead>
+        <tbody id="todoTableBody">
+            </tbody>
+    </table>
+
+    <div class="form-container">
+        <h3 style="text-align: center;">➕ Додати нову справу</h3>
+        <form id="addTodoForm">
+            <div class="form-group">
+                <input type="text" id="todoTitle" placeholder="Введіть назву завдання..." required>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="todoCompleted"> Виконано
+                </label>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Добавити</button>
+        </form>
+    </div>
+
+    <script>
+        const tableBody = document.getElementById("todoTableBody");
+        const refreshBtn = document.getElementById("refreshBtn");
+        const addForm = document.getElementById("addTodoForm");
+        
+        let manualIdCounter = 11;
+
+        function fetchTodos() {
+            tableBody.innerHTML = "<tr><td colspan='3' style='text-align:center;'>Завантаження даних...</td></tr>";
+
+            fetch("https://jsonplaceholder.typicode.com/todos")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Помилка мережі");
+                    }
+                    return response.json(); 
+                })
+                .then(data => {
+                    tableBody.innerHTML = ""; 
+                    
+                    const first10Todos = data.slice(0, 10);
+
+                    first10Todos.forEach(todo => {
+                        addTableRow(todo.id, todo.title, todo.completed);
+                    });
+                })
+                .catch(error => {
+                    console.error("Помилка:", error);
+                    tableBody.innerHTML = "<tr><td colspan='3' style='text-align:center; color:red;'>Не вдалося завантажити дані.</td></tr>";
+                });
+        }
+
+        function addTableRow(id, title, isCompleted) {
+            let row = document.createElement("tr");
+            
+            let statusText = isCompleted ? "✅ Виконано" : "❌ Не виконано";
+
+            row.innerHTML = `
+                <td>${id}</td>
+                <td>${title}</td>
+                <td>${statusText}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        }
+
+        refreshBtn.addEventListener("click", fetchTodos);
+
+        addForm.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const titleValue = document.getElementById("todoTitle").value;
+            const completedValue = document.getElementById("todoCompleted").checked;
+
+            addTableRow(manualIdCounter, titleValue, completedValue);
+            
+            manualIdCounter++;
+
+            addForm.reset();
+        });
+
+        fetchTodos();
+    </script>
+
+</body>
+</html>
