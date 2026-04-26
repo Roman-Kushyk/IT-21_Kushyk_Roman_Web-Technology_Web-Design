@@ -1,20 +1,43 @@
-/* Базові налаштування для всього документа */
+:root {
+    --bg-color: #f4f5f7;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --header-bg: #2c3e50;
+    --nav-bg: #34495e;
+    --accent-color: #3498db;
+    --accent-hover: #2980b9;
+    --border-color: #cccccc;
+}
+
+body.dark-theme {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --header-bg: #000000;
+    --nav-bg: #1a1a1a;
+    --accent-color: #5dade2;
+    --accent-hover: #3498db;
+    --border-color: #444444;
+}
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f5f7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
-/* Оформлення шапки сайту */
+
 header {
-    background-color: #2c3e50;
+    background-color: var(--header-bg);
     color: #ffffff;
     text-align: center;
     padding: 3rem 1rem;
@@ -25,35 +48,52 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Оформлення навігації */
 nav {
-    background-color: #34495e;
+    background-color: var(--nav-bg);
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 1rem 0;
     position: sticky;
     top: 0;
+    gap: 20px;
+    z-index: 100;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
-    margin: 0 1.5rem;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #3498db;
+    color: var(--accent-color);
 }
 
-/* Оформлення основного контенту */
+#theme-toggle {
+    padding: 6px 14px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+#theme-toggle:hover {
+    background-color: #ffffff;
+    color: var(--nav-bg);
+}
+
+
 main {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 section {
@@ -66,7 +106,7 @@ section:last-child {
 
 section h2 {
     margin-bottom: 1rem;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid var(--accent-color);
     display: inline-block;
     padding-bottom: 0.3rem;
 }
@@ -76,7 +116,6 @@ ul {
     margin-left: 1rem;
 }
 
-/* Оформлення форми контактів */
 form {
     display: flex;
     flex-direction: column;
@@ -86,7 +125,9 @@ form {
 
 input, textarea {
     padding: 0.8rem;
-    border: 1px solid #ccc;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-family: inherit;
     font-size: 1rem;
@@ -94,28 +135,26 @@ input, textarea {
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--accent-color);
 }
 
-button {
+form button {
     padding: 0.8rem;
-    background-color: #3498db;
-    color: white;
+    background-color: var(--accent-color);
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #2980b9;
+form button:hover {
+    background-color: var(--accent-hover);
 }
 
-/* Оформлення підвалу */
 footer {
-    background-color: #2c3e50;
+    background-color: var(--header-bg);
     color: #ffffff;
     text-align: center;
     padding: 1.5rem 0;
