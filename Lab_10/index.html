@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт-візитка - Роман Кушик</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Роман Кушик</h1>
+        <p>Моя професія: Студент спеціальності 126 (ІТ) / Web-розробник</p>
+    </header>
+
+    <nav>
+        <a href="#about">Про мене</a>
+        <a href="#skills">Навички</a>
+        <a href="#contact">Контакти</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>Про мене</h2>
+            <p>Я студент 2-го курсу, який вивчає інформаційні системи та веб-розробку. Цей сайт створено як частину лабораторної роботи №10. Цікавлюся програмуванням та апаратними модифікаціями електроніки.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Мої навички</h2>
+            <ul>
+                <li>HTML5 / CSS3</li>
+                <li>JavaScript</li>
+                <li>C++ / Python</li>
+                <li>Робота з GitHub</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Зв'язатися зі мною</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Ваше ім'я" required>
+                <input type="email" id="email" placeholder="Ваш email" required>
+                <textarea id="message" placeholder="Повідомлення" rows="4" required></textarea>
+                <button type="submit">Надіслати</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Роман Кушик. Всі права захищені.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
